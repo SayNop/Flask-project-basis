@@ -48,3 +48,8 @@ The project follows the standard directory structure. Below is an overview of th
     - **`utils/`**: Contains all py files.
 
 - **`scripts/`**: Script files used during deployment. (change scripts mode `chmod +x scripts/*.sh`)
+
+
+## manual
+- Check all `todo` in code.
+- For api writing, see the `example` blueprint code.
