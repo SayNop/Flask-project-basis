@@ -52,4 +52,6 @@ The project follows the standard directory structure. Below is an overview of th
 
 ## manual
 - Check all `todo` in code.
+- Update log file path in `scripts/run_flask.sh`.
 - For api writing, see the `example` blueprint code.
+- Run `scripts/run_flask.sh` to start server.
