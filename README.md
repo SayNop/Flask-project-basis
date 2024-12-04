@@ -50,7 +50,7 @@ The project follows the standard directory structure. Below is an overview of th
 - **`scripts/`**: Script files used during deployment. (change scripts mode `chmod +x scripts/*.sh`)
 
 
-## manual
+## Manual
 - Check all `todo` in code.
 - Update log file path in `scripts/run_flask.sh`.
 - For api writing, see the `example` blueprint code.
