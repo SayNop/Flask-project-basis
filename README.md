@@ -25,8 +25,6 @@ Flask-HTTPAuth==4.5.0
 
 PyMySQL==1.0.2
 
-PyJWT==1.6.4
-
 greenlet==0.4.15
 
 gunicorn==19.9.0

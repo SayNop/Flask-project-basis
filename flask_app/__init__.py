@@ -1,7 +1,7 @@
 from flask import Flask
 
 
-def create_flask_app(config: dict):
+def create_flask_app(config: dict) -> Flask:
     """
     :param config: configuration dict
     :return: Flask app
