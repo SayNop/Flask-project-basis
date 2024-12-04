@@ -15,9 +15,9 @@ NOT_FOUND = 2001
 DUPLICATE = 2002
 
 
-def success_response(msg='OK', data={}):
+def success_response(msg='OK', data={}) -> dict:
     return {'code': SUCCESS, 'message': msg, 'data': data}
 
 
-def fail_response(code=FRAMEWORK, msg='请求失败', data={}):
+def fail_response(code=FRAMEWORK, msg='请求失败', data={}) -> dict:
     return {'code': code, 'message': msg, 'data': data}
