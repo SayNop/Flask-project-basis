@@ -10,8 +10,12 @@ def create_flask_app(config: dict) -> Flask:
     app.config.from_mapping(config)
 
     # limiter
-    # from utils.limiter import limiter as lmt
-    # lmt.init_app(app)
+    from utils.limiter import limiter
+    limiter.init_app(app)
+
+    # logger
+    from utils.logging import create_logger
+    create_logger(app)
 
     # redis
     from redis import StrictRedis
