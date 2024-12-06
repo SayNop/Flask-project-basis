@@ -53,3 +53,25 @@ The project follows the standard directory structure. Below is an overview of th
 - Update log file path in `scripts/run_flask.sh`.
 - For api writing, see the `example` blueprint code.
 - Run `scripts/run_flask.sh` to start server.
+
+
+## Pycharm Run / Debug Configurations
+Add *Flask server*
+- Select *Target type: Custom*
+- Input *Target: flask_app.main* (flask app path)
+- Input *Application: app* (flask app name)
+
+
+## Dev
+- conn redis in views
+    ```python
+    from flask import current_app
+    current_app.redis_master.set('test', 1)
+    ```
+
+- use logger in views
+    ```python
+    from flask import current_app
+    current_app.logger.info('Logger test')
+    # logger content in *flask.log*
+    ```
