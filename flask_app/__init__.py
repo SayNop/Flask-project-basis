@@ -22,6 +22,10 @@ def create_flask_app(config: dict) -> Flask:
     from settings import REDIS_CONFIG
     app.redis_master = StrictRedis(**REDIS_CONFIG)
 
+    # auth
+    from utils.auth import init_serializer
+    app.serializer = init_serializer(app)
+
     # MySQL conn init
     from models import db
     db.init_app(app)
