@@ -110,7 +110,7 @@ class CustomArgument(Argument):
 def mobile(mobile_str):
     """
     mobile format
-    :param mobile_str: str input str
+    :param mobile_str: input str
     :return: mobile_str
     """
     import re
@@ -118,3 +118,32 @@ def mobile(mobile_str):
         return mobile_str
     else:
         raise ValueError('{} is not a valid mobile'.format(mobile_str))
+
+
+class str_len_range(object):
+    """
+    String length check
+    :params low: min length
+    :params high: max length
+    :params value: check string
+    """
+    def __init__(self, low, high):
+        self.low = low
+        self.high = high
+
+    def __call__(self, value):
+        if type(value) != str or len(value) < self.low or len(value) > self.high:
+            raise ValueError(f'{value} exception，string length range {self.low}-{self.high}')
+        return value
+
+
+def ip_address(ip_str):
+    """
+    ip address check
+    :param ip_str: input str
+    :return: ip_address_str
+    """
+    import re
+    if re.match(r'^((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}$', ip_str):
+        return ip_str
+    raise ValueError(f'{ip_str} is in an illegal IP address format！')
