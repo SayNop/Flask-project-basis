@@ -40,7 +40,7 @@ The project follows the standard directory structure. Below is an overview of th
     - **`__init__.py`**: Initialize the flask application.
     - **`resources/`**: Contains all bluepoints.
 
-- **`common/`**: Contains packages and tools of the project. If your use PyCharm, mark this dir as Sources Root
+- **`common/`**: Contains packages and tools of the project. **If your use PyCharm, mark this dir as Sources Root**
     - **`settings/`**: Database ORM
     - **`model/`**: Database ORM 
     - **`utils/`**: Contains all py files.
@@ -60,6 +60,12 @@ Add *Flask server*
 - Select *Target type: Custom*
 - Input *Target: flask_app.main* (flask app path)
 - Input *Application: app* (flask app name)
+
+
+## About Models
+Create a data table
+1. Write the create table SQL statement (refer to `common/models/example.sql`)
+2. Write ORM according to the data table field type
 
 
 ## Dev

@@ -10,7 +10,7 @@ Dev_flask_config = dict(
     LOGGING_FILE_DIR=str(Path(__file__).resolve().parents[2] / 'log'),
 
     # todo: database
-    SQLALCHEMY_DATABASE_URI=f'mysql+pymysql://root:mysql123@{_host}:3306/test',
+    SQLALCHEMY_DATABASE_URI=f'mysql+pymysql://root:mysql123@{_host}:3306/example',
 )
 
 

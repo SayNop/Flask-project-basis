@@ -107,7 +107,7 @@ class CustomArgument(Argument):
         abort(400, code=PARAMS_ERROR, success=False, message=error_msg)
 
 
-def mobile(mobile_str):
+def mobile(mobile_str: str) -> str:
     """
     mobile format
     :param mobile_str: input str
@@ -127,17 +127,17 @@ class str_len_range(object):
     :params high: max length
     :params value: check string
     """
-    def __init__(self, low, high):
+    def __init__(self, low: int, high: int):
         self.low = low
         self.high = high
 
-    def __call__(self, value):
+    def __call__(self, value: str) -> str:
         if type(value) != str or len(value) < self.low or len(value) > self.high:
             raise ValueError(f'{value} exception，string length range {self.low}-{self.high}')
         return value
 
 
-def ip_address(ip_str):
+def ip_address(ip_str: str) -> str:
     """
     ip address check
     :param ip_str: input str

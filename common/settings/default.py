@@ -3,7 +3,7 @@ Prod_flask_config = dict(
     LOGGING_FILE_DIR='/data/logs/flask-basis/',
 
     # todo: database
-    SQLALCHEMY_DATABASE_URI=f'mysql+pymysql://root:mysql123@127.0.0.1:3306/test',
+    SQLALCHEMY_DATABASE_URI=f'mysql+pymysql://root:mysql123@127.0.0.1:3306/example',
 )
 
 # todo: prod redis
