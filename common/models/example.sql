@@ -1,5 +1,6 @@
 SET @@auto_increment_increment=9;
 
+-- CREATE DATABASE IF NOT EXISTS example;
 -- mysql -uroot -p -Dexample < example.sql
 
 DROP TABLE IF EXISTS `login_user`;
@@ -11,4 +12,4 @@ CREATE TABLE `login_user` (
     `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
     `last_login` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'last login time',
     PRIMARY KEY (`phone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='APP账号表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Login User';
