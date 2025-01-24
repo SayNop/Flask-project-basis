@@ -10,7 +10,10 @@ auth = HTTPTokenAuth()
 
 
 def init_serializer(app) -> TimedJSONWebSignatureSerializer:
-    return TimedJSONWebSignatureSerializer(app.config['SECRET_KEY'], expires_in=app.config['JWT_EXPIRY_DAYS'] * 24 * 3600)
+    print(app.config['JWT_SECRET'])
+    res = TimedJSONWebSignatureSerializer(app.config['JWT_SECRET'], expires_in=app.config['JWT_EXPIRY_DAYS'] * 24 * 3600)
+    print(res.secret_key)
+    return res
 
 
 @auth.verify_token
