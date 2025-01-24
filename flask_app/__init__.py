@@ -31,5 +31,9 @@ def create_flask_app(config: dict) -> Flask:
     db.init_app(app)
 
     # bluepoints
+    from .resources.example import example_bp  # todo: remove example bluepoints
+    app.register_blueprint(example_bp)
+
+    # todo: add your bluepoints here
 
     return app
