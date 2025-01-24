@@ -10,7 +10,8 @@ class LoginUser(db.Model):
 
     Create a data table
     1. Write a create table SQL statement
-    2. Write ORM according to the data table field type
+    2. Use the SQL script in step 1 to create a data table in mysql cli
+    3. Write ORM according to the data table field type
     """
 
     __tablename__ = 'login_user'
