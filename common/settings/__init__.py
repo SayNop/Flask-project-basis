@@ -19,7 +19,7 @@ FLASK_CONFIG = dict(
     SQLALCHEMY_ECHO=False,
 
     # JWT
-    JWT_SECRET='',  # todo: fill secret
+    JWT_SECRET='example',  # todo: fill secret
     JWT_EXPIRY_DAYS=7
 )
 
