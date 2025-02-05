@@ -11,9 +11,9 @@ from utils.auth import TOKEN_PREFIX, CONFLICT_PREFIX
 class LoginResource(Resource):
     def post(self):
         rp = RequestParser(parser.CustomArgument)
-        rp.add_argument('phone', type=parser.mobile, required=True, location='json', help='phone number error')
-        # rp.add_argument('code', type=inputs.regex(r'\d{4}'), required=False, location='json', help='sms code error')
-        rp.add_argument('password', type=parser.str_len_range(8, 16), required=False, location='json', help='password error')
+        rp.add_argument('phone', type=parser.mobile, required=True, location='json', help='phone format error')
+        # rp.add_argument('code', type=inputs.regex(r'\d{4}'), required=False, location='json', help='sms code format error')
+        rp.add_argument('password', type=parser.str_len_range(8, 16), required=False, location='json', help='password format error')
         args = rp.parse_args()
 
         user = LoginUser.query.filter_by(phone=args.phone).first()
@@ -45,9 +45,9 @@ class LoginResource(Resource):
 class RegisterResource(Resource):
     def post(self):
         rp = RequestParser(parser.CustomArgument)
-        rp.add_argument('phone', type=parser.mobile, required=True, location='json', help='phone number error')
-        rp.add_argument('password', type=parser.str_len_range(8, 16), required=True, location='json', help='password error')
-        rp.add_argument('username', type=parser.str_len_range(1, 15), required=False, location='json', help='username error')
+        rp.add_argument('phone', type=parser.mobile, required=True, location='json', help='phone format error')
+        rp.add_argument('password', type=parser.str_len_range(8, 16), required=True, location='json', help='password format error')
+        rp.add_argument('username', type=parser.str_len_range(1, 15), required=False, location='json', help='username format error')
         args = rp.parse_args()
 
         user = LoginUser.query.filter_by(phone=args.phone).first()

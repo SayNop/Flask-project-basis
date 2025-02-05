@@ -12,3 +12,5 @@ example_api.representation('application/json')(output_json)
 
 example_api.add_resource(ex_passport.LoginResource, '/api/login', endpoint='GetAuth')
 example_api.add_resource(ex_passport.RegisterResource, '/api/register', endpoint='Register')
+
+example_api.add_resource(ex_profile.PasswordResource, '/my/pwd', endpoint='Password')
