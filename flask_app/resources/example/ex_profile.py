@@ -1,5 +1,5 @@
 from flask import current_app, g
-from flask_restful import Resource, inputs
+from flask_restful import Resource
 from flask_restful.reqparse import RequestParser
 
 from models import db
