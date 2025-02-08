@@ -1,4 +1,4 @@
-from flask import current_app
+from flask import current_app, g
 from flask_restful import Resource, inputs
 from flask_restful.reqparse import RequestParser
 
@@ -13,6 +13,7 @@ class PasswordResource(Resource):
         'post': [auth.login_required],
         'put': [auth.login_required]
     }
+
     def post(self):
         rp = RequestParser(parser.CustomArgument)
         rp.add_argument('phone', type=parser.mobile, required=True, location='json', help='phone format error')
@@ -68,3 +69,44 @@ class PasswordResource(Resource):
                                            1)
 
         return response.success_response("Change password success")
+
+
+class UserInfoResource(Resource):
+    method_decorators = {
+        'get': [auth.login_required],
+        'put': [auth.login_required]
+    }
+
+    def get(self):
+        user = LoginUser.query.filter_by(phone=g.phone).first()
+        if not user:
+            return response.fail_response(response.PARAMS_ERROR, 'User does not exist')
+
+        return response.success_response(data={
+            'phone': user.phone,
+            'username': user.username,
+            # 'company': user.company,
+        })
+
+    def put(self):
+        rp = RequestParser(parser.CustomArgument)
+        rp.add_argument('username', type=parser.str_len_range(1, 15), required=True, location='json', help='username error')
+        args = rp.parse_args()
+
+        user = LoginUser.query.filter_by(phone=g.phone).first()
+        if not user:
+            return response.fail_response(response.PARAMS_ERROR, 'User does not exist')
+
+        user.username = args.username
+        db.session.add(user)
+        try:
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.exception(e)
+            return response.fail_response(msg='Update user info fail')
+
+        return response.success_response(data={
+            'phone': user.phone,
+            'username': user.username,
+        })
