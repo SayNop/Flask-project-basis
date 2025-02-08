@@ -1,4 +1,4 @@
-from flask import current_app, request
+from flask import current_app, request, g
 from flask_httpauth import HTTPTokenAuth
 from itsdangerous import TimedJSONWebSignatureSerializer
 
@@ -25,21 +25,22 @@ def verify_token(token: str) -> bool:
     if _check_conflict(token):
         return False
     # todo check user
+    g.phone = data['phone']
     return True
 
 
 @auth.error_handler
 def error_handler() -> dict:
     if not request.headers.get('Authorization'):
-        return response.fail_response(response.TOKEN_INVALID)
+        return response.fail_response(response.TOKEN_INVALID, 'token error')
     try:
         token = request.headers['Authorization'].split(None, 1)[1]
         current_app.serializer.loads(token)
     except Exception:
-        return response.fail_response(response.TOKEN_EXPIRY)
+        return response.fail_response(response.TOKEN_EXPIRY, 'token expiry')
     if _check_conflict(token):
         return response.fail_response(response.TOKEN_CONFLICT, msg='Log in on other platforms.')
-    return response.fail_response(response.PERMISSION_DENIED)
+    return response.fail_response(response.PERMISSION_DENIED, 'no permission')
 
 
 def generate_token(payload: dict) -> str:
